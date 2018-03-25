@@ -1,0 +1,28 @@
+{
+  "name": "discord-stream-helper",
+  "version": "1.0.0",
+  "description": "A Discord bot to help you make stream announcements to your community",
+  "main": "StreamBot.js",
+  "scripts": {
+    "start": "nodemon StreamBot.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alex-taxiera/DiscordStreamHelper.git"
+  },
+  "author": "Alex Taxiera",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/alex-taxiera/DiscordStreamHelper/issues"
+  },
+  "homepage": "https://github.com/alex-taxiera/DiscordStreamHelper#readme",
+  "dependencies": {
+    "colors": "^1.2.1",
+    "eris": "^0.8.5",
+    "moment": "^2.21.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0",
+    "standard": "^10.0.2"
+  }
+}
