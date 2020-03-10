@@ -1,6 +1,5 @@
 import {
-  GuildCommand,
-  CommandResults
+  GuildCommand
 } from 'eris-boiler'
 import {
   vip as permission
@@ -12,13 +11,12 @@ export default new GuildCommand({
   options: {
     permission,
     parameters: [
-      '<-E | --everyone> <-L | --link "link"> <channel mention or id> <announcement text>' // eslint ignore
+      '<-E | --everyone> <-L | --link "link"> <announcement text>'
     ]
   },
   run: async (bot, { msg, params }): Promise<string> => {
     const dbo = await bot.dbm.newQuery('guild').get(msg.channel.guild.id)
-    const channelId: string = msg.channelMentions[0] ||
-                              dbo?.get('announceChannel')
+    const channelId: string = dbo?.get('announceChannel')
 
     let url = dbo?.get('streamLink')
     let everyone = false
@@ -45,9 +43,7 @@ export default new GuildCommand({
     }
 
     let content = params
-      .filter(
-        (val) => !val.startsWith('-') && !val.startsWith('<') && val !== '-'
-      )
+      .filter((val) => !val.startsWith('-'))
       .join(' ')
     if (everyone) {
       content = '@everyone ' + content
