@@ -3,23 +3,23 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 const {
-  NODE_ENV,
-  STREAM_DB_CLIENT,
-  STREAM_DB_NAME,
-  STREAM_DB_USER,
-  STREAM_DB_PASS,
-  STREAM_DB_HOST,
-  STREAM_DB_CONNECTION
+  DB_CLIENT,
+  DB_NAME,
+  DB_USER,
+  DB_PASS,
+  DB_HOST,
+  ADMIN_DB_USER,
+  ADMIN_DB_PASS
 } = process.env
 
 module.exports = {
-  [NODE_ENV]: {
-    client: STREAM_DB_CLIENT,
-    connection: STREAM_DB_CONNECTION || {
-      host: STREAM_DB_HOST,
-      database: STREAM_DB_NAME,
-      user: STREAM_DB_USER,
-      password: STREAM_DB_PASS
+  production: {
+    client: DB_CLIENT,
+    connection: {
+      host: DB_HOST,
+      database: DB_NAME,
+      user: ADMIN_DB_USER,
+      password: ADMIN_DB_PASS
     },
     pool: {
       min: 2,
@@ -27,6 +27,15 @@ module.exports = {
     },
     migrations: {
       tableName: 'knex_migrations'
+    }
+  },
+  development: {
+    ...module.exports.production,
+    connection: {
+      host: DB_HOST,
+      database: DB_NAME,
+      user: DB_USER,
+      password: DB_PASS
     }
   }
 }
