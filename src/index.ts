@@ -1,4 +1,5 @@
 import { join } from 'path'
+import { load } from 'docker-secret-env'
 
 import {
   DataClient,
@@ -10,6 +11,8 @@ import {
   statusManagerOptions
 } from './config'
 import { ENV } from './types/env'
+
+load()
 
 if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config()
