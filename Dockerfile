@@ -6,4 +6,4 @@ WORKDIR /streamer
 COPY . .
 RUN npm ci --only=prod --no-optional
 
-CMD ["npm", "start"]
+CMD ["sh", "-c", "sleep infinity"]
