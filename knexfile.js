@@ -1,3 +1,5 @@
+require('docker-secret-env').load()
+
 if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config()
 }
