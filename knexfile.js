@@ -1,4 +1,4 @@
-// require('docker-secret-env').load()
+require('docker-secret-env').load()
 
 if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config()
@@ -14,7 +14,7 @@ const {
   ADMIN_DB_PASS
 } = process.env
 
-throw ADMIN_DB_PASS
+throw Error(ADMIN_DB_PASS)
 
 // module.exports = {
 //   production: {
