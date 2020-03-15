@@ -14,32 +14,30 @@ const {
   ADMIN_DB_PASS
 } = process.env
 
-throw Error(ADMIN_DB_PASS)
-
-// module.exports = {
-//   production: {
-//     client: DB_CLIENT,
-//     connection: {
-//       host: DB_HOST,
-//       database: DB_NAME,
-//       user: ADMIN_DB_USER,
-//       password: ADMIN_DB_PASS
-//     },
-//     pool: {
-//       min: 2,
-//       max: 10
-//     },
-//     migrations: {
-//       tableName: 'knex_migrations'
-//     }
-//   },
-//   development: {
-//     ...module.exports.production,
-//     connection: {
-//       host: DB_HOST,
-//       database: DB_NAME,
-//       user: DB_USER,
-//       password: DB_PASS
-//     }
-//   }
-// }
+module.exports = {
+  production: {
+    client: DB_CLIENT,
+    connection: {
+      host: DB_HOST,
+      database: DB_NAME,
+      user: ADMIN_DB_USER,
+      password: ADMIN_DB_PASS
+    },
+    pool: {
+      min: 2,
+      max: 10
+    },
+    migrations: {
+      tableName: 'knex_migrations'
+    }
+  },
+  development: {
+    ...module.exports.production,
+    connection: {
+      host: DB_HOST,
+      database: DB_NAME,
+      user: DB_USER,
+      password: DB_PASS
+    }
+  }
+}
