@@ -14,6 +14,9 @@ const {
   ADMIN_DB_PASS
 } = process.env
 
+console.log('process.env.NODE_ENV :', process.env.NODE_ENV) // eslint-disable-line
+console.log('ADMIN_DB_PASS :', ADMIN_DB_PASS) // eslint-disable-line
+
 module.exports = {
   production: {
     client: DB_CLIENT,
