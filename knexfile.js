@@ -1,4 +1,4 @@
-require('docker-secret-env').load()
+// require('docker-secret-env').load()
 
 if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config()
@@ -14,33 +14,32 @@ const {
   ADMIN_DB_PASS
 } = process.env
 
-console.log('process.env.NODE_ENV :', process.env.NODE_ENV) // eslint-disable-line
-console.log('ADMIN_DB_PASS :', ADMIN_DB_PASS) // eslint-disable-line
+throw ADMIN_DB_PASS
 
-module.exports = {
-  production: {
-    client: DB_CLIENT,
-    connection: {
-      host: DB_HOST,
-      database: DB_NAME,
-      user: ADMIN_DB_USER,
-      password: ADMIN_DB_PASS
-    },
-    pool: {
-      min: 2,
-      max: 10
-    },
-    migrations: {
-      tableName: 'knex_migrations'
-    }
-  },
-  development: {
-    ...module.exports.production,
-    connection: {
-      host: DB_HOST,
-      database: DB_NAME,
-      user: DB_USER,
-      password: DB_PASS
-    }
-  }
-}
+// module.exports = {
+//   production: {
+//     client: DB_CLIENT,
+//     connection: {
+//       host: DB_HOST,
+//       database: DB_NAME,
+//       user: ADMIN_DB_USER,
+//       password: ADMIN_DB_PASS
+//     },
+//     pool: {
+//       min: 2,
+//       max: 10
+//     },
+//     migrations: {
+//       tableName: 'knex_migrations'
+//     }
+//   },
+//   development: {
+//     ...module.exports.production,
+//     connection: {
+//       host: DB_HOST,
+//       database: DB_NAME,
+//       user: DB_USER,
+//       password: DB_PASS
+//     }
+//   }
+// }
